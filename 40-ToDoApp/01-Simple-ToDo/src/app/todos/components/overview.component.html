@@ -8,27 +8,15 @@
       </p>
     </div>
 
-    <div class="new-todo">
-      <input type="text" placeholder="What needs to be done?"  [(ngModel)]="newToDoTitle" autofocus autocomplete="off" />
-      <button class="add-button" id="add-button" (click)="addToDo()">
-        +
-      </button>
-    </div>
+    <td-new-todo #newtodo (onAddToDo)="onAddToDo($event)"></td-new-todo>
 
   </header>
 
   <section class="main">
 
-    <ul class="todo-list" >
-      <li *ngFor="let todo of todos">
-        <span>{{todo.title}}</span>
-        <button class="remove-button" (click)="removeToDo(todo)">
-          x
-        </button>
-      </li>
-    </ul>
+    <td-todo-list [todos]="todos" (onRemoveToDo)="onRemoveToDo($event)"></td-todo-list>
 
-    </section>
+  </section>
 </section>
 <footer class="info">
   <p>JavaScript Example / Initial template from <a href="https://github.com/tastejs/todomvc-app-template">todomvc-app-template</a>

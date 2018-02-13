@@ -7,7 +7,6 @@ import {ToDoService} from '../model/todo.service';
 })
 export class OverviewComponent implements OnInit {
 
-  newToDoTitle = '';
   todos: ToDo[] = [];
   doneToDos: ToDo[] = [];
 
@@ -17,10 +16,9 @@ export class OverviewComponent implements OnInit {
     this.loadToDos();
   }
 
-  addToDo() {
-    this.todos.push(new ToDo(this.newToDoTitle));
+  onAddToDo(toDo: ToDo) {
+    this.todos.push(toDo);
     this.todoService.saveToDos(this.todos);
-    this.newToDoTitle = '';
   }
 
   completeToDo(todo: ToDo) {
@@ -29,8 +27,7 @@ export class OverviewComponent implements OnInit {
     this.loadToDos();
   }
 
-  // currently not used ...
-  removeToDo(todo: ToDo) {
+  onRemoveToDo(todo: ToDo) {
     this.todos.splice(this.todos.indexOf(todo), 1);
     this.todoService.saveToDos(this.todos);
   }

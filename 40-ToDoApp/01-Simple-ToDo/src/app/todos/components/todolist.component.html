@@ -1,0 +1,10 @@
+<ul class="todo-list" >
+  <li *ngFor="let todo of todos">
+    <span>{{todo.title}}</span>
+    <button class="remove-button" (click)="removeToDo(todo)">
+      x
+    </button>
+  </li>
+</ul>
+
+
